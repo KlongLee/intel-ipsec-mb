@@ -185,7 +185,10 @@ ifeq ($(CC_HAS_CET),1)
 LDFLAGS += -fcf-protection=full -Wl,-z,ibt -Wl,-z,shstk -Wl,-z,cet-report=error
 endif
 else
-CFLAGS += -fPIE
+# SPDK crypto needs shared but -fPIC so to make it clear what
+# we are doing, we just comment out the CFLAGS below and
+# explicitly set them in our relevant makefile.
+#CFLAGS += -fPIE
 LIBNAME = $(LIB).a
 LIBPERM = 0644
 LDFLAGS += -g
