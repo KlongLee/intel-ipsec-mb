@@ -113,7 +113,7 @@ CC_HAS_CET = $(and $(shell $(CC) --target-help 2> /dev/null | grep -m1 -e "-z ib
 	$(shell $(CC) --help=common 2> /dev/null | grep -m1 -e "-fcf-protection" | wc -l))
 CET_LDFLAGS=-r -z ibt -z shstk
 endif
-CFLAGS := -fPIC $(EXTRA_CFLAGS) $(INCLUDES) \
+CFLAGS := $(EXTRA_CFLAGS) $(INCLUDES) \
 	-W -Wall -Wextra -Wmissing-declarations -Wpointer-arith \
 	-Wcast-qual -Wundef -Wwrite-strings  \
 	-Wformat -Wformat-security \
@@ -121,6 +121,9 @@ CFLAGS := -fPIC $(EXTRA_CFLAGS) $(INCLUDES) \
 	-Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition \
 	-fno-delete-null-pointer-checks -fwrapv -std=c99
 
+# Comment out fPIC here and let SPDK decide,
+# when it needs it for crypto itself.
+#CFLAGS += -fPIC
 # -fno-strict-overflow is not supported by clang
 ifneq ($(CC),clang)
 CFLAGS += -fno-strict-overflow
