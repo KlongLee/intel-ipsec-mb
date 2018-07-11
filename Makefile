@@ -170,7 +170,10 @@ LIBNAME = $(LIB).so.$(VERSION)
 LIBPERM = 0755
 LDFLAGS += -z noexecstack -z relro -z now
 else
-CFLAGS += -fPIE
+# SPDK crypto needs shared but -fPIC so to make it clear what
+# we are doing, we just comment out the CFLAGS below and
+# explicitly set them in our relevant makefile.
+#CFLAGS += -fPIE
 LIBNAME = $(LIB).a
 LIBPERM = 0644
 LDFLAGS += -g
