@@ -112,13 +112,17 @@ ifeq ($(MINGW),0)
 CC_HAS_CET = $(and $(shell $(CC) --target-help 2> /dev/null | grep -m1 -e "-z ibt" | wc -l), \
 	$(shell $(CC) --help=common 2> /dev/null | grep -m1 -e "-fcf-protection" | wc -l))
 endif
-CFLAGS := -fPIC $(EXTRA_CFLAGS) $(INCLUDES) \
+CFLAGS := $(EXTRA_CFLAGS) $(INCLUDES) \
 	-W -Wall -Wextra -Wmissing-declarations -Wpointer-arith \
 	-Wcast-qual -Wundef -Wwrite-strings  \
 	-Wformat -Wformat-security \
 	-Wunreachable-code -Wmissing-noreturn -Wsign-compare -Wno-endif-labels \
 	-Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition \
 	-fno-delete-null-pointer-checks -fwrapv -std=c99
+
+# Let SPDK decide when to pass -fPIC,
+# rather than forcing it here.
+#CFLAGS += -fPIC
 
 # -fno-strict-overflow is not supported by clang
 ifneq ($(CC),clang)
