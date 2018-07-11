@@ -90,7 +90,7 @@ CC_HAS_CET = $(and $(shell $(CC) --target-help 2> /dev/null | grep -m1 -e "-z ib
 	$(shell $(CC) --help=common 2> /dev/null | grep -m1 -e "-fcf-protection" | wc -l))
 CET_LDFLAGS=-r -z ibt -z shstk
 endif
-CFLAGS := -fPIC -DNO_COMPAT_IMB_API_053 $(EXTRA_CFLAGS) $(INCLUDES) \
+CFLAGS := -DNO_COMPAT_IMB_API_053 $(EXTRA_CFLAGS) $(INCLUDES) \
 	-W -Wall -Wextra -Wmissing-declarations -Wpointer-arith \
 	-Wcast-qual -Wundef -Wwrite-strings  \
 	-Wformat -Wformat-security \
@@ -98,6 +98,10 @@ CFLAGS := -fPIC -DNO_COMPAT_IMB_API_053 $(EXTRA_CFLAGS) $(INCLUDES) \
 	-Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition \
 	-fno-delete-null-pointer-checks -fwrapv
 
+# SPDK crypto needs shared but -fPIC so to make it clear what
+# we are doing, we just comment out the CFLAGS below and
+# explicitly set them in our relevant makefile.
+#CFLAGS += -fPIC
 # -fno-strict-overflow is not supported by clang
 ifneq ($(CC),clang)
 CFLAGS += -fno-strict-overflow
