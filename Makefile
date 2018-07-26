@@ -64,7 +64,10 @@ endif
 
 # so or static build
 ifeq ($(SHARED),y)
-CFLAGS += -fPIC
+# SPDK crypto needs shared but -fPIC so to make it clear what
+# we are doing, we just comment out the CFLAGS below and
+# explicitly set them in our relevant makefile.
+#CFLAGS += -fPIE
 LIBNAME = $(LIB).so.$(VERSION)
 LIBPERM = 0755
 LDFLAGS += -z noexecstack -z relro -z now
