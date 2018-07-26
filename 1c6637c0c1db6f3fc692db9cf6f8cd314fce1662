@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ac4847c_05a39712",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1011222
+      },
+      "writtenOn": "2018-07-26T17:50:36Z",
+      "side": 1,
+      "message": "I\u0027m just curious - why wasn\u0027t this change part of the v0.48 patch?",
+      "revId": "1c6637c0c1db6f3fc692db9cf6f8cd314fce1662",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27a61ecb_a5b4eee3",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1011222
+      },
+      "writtenOn": "2018-07-26T17:50:36Z",
+      "side": 1,
+      "message": "I\u0027d suggest just keeping this as -fPIC, even though it is commented out.",
+      "revId": "1c6637c0c1db6f3fc692db9cf6f8cd314fce1662",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
