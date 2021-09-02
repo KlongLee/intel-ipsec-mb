@@ -29,21 +29,12 @@
 
 all:
 	$(MAKE) -C lib
-	$(MAKE) -C test
-	$(MAKE) -C perf
-	$(MAKE) -C examples
 
 clean:
 	$(MAKE) -C lib clean
-	$(MAKE) -C test clean
-	$(MAKE) -C perf clean
-	$(MAKE) -C examples clean
 
 style:
 	$(MAKE) -C lib style
-	$(MAKE) -C test style
-	$(MAKE) -C perf style
-	$(MAKE) -C examples style
 
 install:
 	$(MAKE) -C lib install
